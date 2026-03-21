@@ -10,6 +10,36 @@ services:
       - "5432:5432"
     volumes:
       - db-data:/var/lib/postgresql/data
+    networks:
+      - zazu-net
+
+  bot:
+    build:
+      context: .
+      dockerfile: apps/bot/Dockerfile
+    restart: always
+    environment:
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@db:5432/${POSTGRES_DB:-zazu}?schema=public
+    depends_on:
+      - db
+    networks:
+      - zazu-net
+      - traefik-public
+    labels:
+      - "traefik.enable=true"
+      # Bot doesn't strictly need a domain for polling, but it's good for future webhooks or Health Checks
+      - "traefik.http.routers.zazu-bot.rule=Host(`${BOT_DOMAIN:-zazu-bot.local}`)"
+      - "traefik.http.routers.zazu-bot.entrypoints=websecure"
+      - "traefik.http.routers.zazu-bot.tls.certresolver=${CERT_RESOLVER:-myresolver}"
+      - "traefik.http.services.zazu-bot.loadbalancer.server.port=3000"
+
+networks:
+  zazu-net:
+    driver: bridge
+  traefik-public:
+    external: true
 
 volumes:
   db-data:
