@@ -1,0 +1,36 @@
+{
+  "name": "zazu",
+  "version": "0.0.0",
+  "private": true,
+  "author": {
+    "name": "Samuel Aure",
+    "url": "https://www.samuelaure.com"
+  },
+  "license": "Proprietary",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:bot": "npm run dev --workspace=@zazu/bot",
+    "dev:dashboard": "npm run dev --workspace=@zazu/dashboard",
+    "build": "npm run build --workspaces",
+    "start": "npm run start --workspaces",
+    "lint": "eslint . --ext .ts,.tsx",
+    "format": "prettier --write .",
+    "test": "npm run test --workspaces",
+    "verify": "npm run lint && npm run build",
+    "db:push": "npm run prisma:push --workspace=@zazu/db",
+    "db:studio": "npm run prisma:studio --workspace=@zazu/db"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0",
+    "ts-node": "^10.9.1",
+    "@types/node": "^20.0.0"
+  }
+}
