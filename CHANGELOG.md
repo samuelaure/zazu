@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.0] - 2026-03-21
+
+### Added
+- **Dockerization**: Multi-stage `Dockerfile` for the Bot app, optimized for monorepos (isolated builds).
+- **Traefik Integration**: Direct routing, SSL termination (via certresolvers), and automated container discovery labels.
+- **Production Isolation**: Dedicated Docker network and `.env.production` deployment template.
+- **Service Orchestration**: Unified `docker-compose.yml` for database and bot service.
+
 ## [1.0.0] - 2026-03-21
 
 ### Added
