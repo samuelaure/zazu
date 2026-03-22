@@ -1,22 +1,23 @@
 services:
   db:
     image: postgres:16-alpine
+    container_name: zazu-postgres
     restart: always
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
       POSTGRES_DB: ${POSTGRES_DB:-zazu}
-    ports:
-      - "5432:5432"
+    networks:
+      - shared-mesh
     volumes:
       - db-data:/var/lib/postgresql/data
-    networks:
-      - zazu-net
+    # Bunker Mode: No ports mapped, no Traefik labels, 100% internal.
 
   bot:
     build:
       context: .
       dockerfile: apps/bot/Dockerfile
+    container_name: zazu-bot
     restart: always
     environment:
       TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
@@ -25,20 +26,18 @@ services:
     depends_on:
       - db
     networks:
-      - zazu-net
-      - traefik-public
+      - shared-mesh
     labels:
       - "traefik.enable=true"
-      # Bot doesn't strictly need a domain for polling, but it's good for future webhooks or Health Checks
-      - "traefik.http.routers.zazu-bot.rule=Host(`${BOT_DOMAIN:-zazu-bot.local}`)"
+      # Zazŭ answers to this domain via Traefik (gateway)
+      - "traefik.http.routers.zazu-bot.rule=Host(`${BOT_DOMAIN:-zazu.9nau.com}`)"
       - "traefik.http.routers.zazu-bot.entrypoints=websecure"
-      - "traefik.http.routers.zazu-bot.tls.certresolver=${CERT_RESOLVER:-myresolver}"
+      - "traefik.http.routers.zazu-bot.tls.certresolver=${CERT_RESOLVER:-letencrypt}"
       - "traefik.http.services.zazu-bot.loadbalancer.server.port=3000"
+      - "traefik.docker.network=shared-mesh"
 
 networks:
-  zazu-net:
-    driver: bridge
-  traefik-public:
+  shared-mesh:
     external: true
 
 volumes:
