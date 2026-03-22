@@ -11,7 +11,6 @@ services:
       - shared-mesh
     volumes:
       - db-data:/var/lib/postgresql/data
-    # Bunker Mode: No ports mapped, no Traefik labels, 100% internal.
 
   bot:
     build:
@@ -27,13 +26,30 @@ services:
       - db
     networks:
       - shared-mesh
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: apps/dashboard/Dockerfile
+    container_name: zazu-dashboard
+    restart: always
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@db:5432/${POSTGRES_DB:-zazu}?schema=public
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
+      AUTH_SECRET: ${AUTH_SECRET}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      AUTH_TRUST_HOST: "true"
+      NEXTAUTH_URL: https://${BOT_DOMAIN:-zazu.9nau.com}
+    depends_on:
+      - db
+    networks:
+      - shared-mesh
     labels:
       - "traefik.enable=true"
-      # Zazŭ answers to this domain via Traefik (gateway)
-      - "traefik.http.routers.zazu-bot.rule=Host(`${BOT_DOMAIN:-zazu.9nau.com}`)"
-      - "traefik.http.routers.zazu-bot.entrypoints=websecure"
-      - "traefik.http.routers.zazu-bot.tls.certresolver=${CERT_RESOLVER:-letencrypt}"
-      - "traefik.http.services.zazu-bot.loadbalancer.server.port=3000"
+      - "traefik.http.routers.zazu-dashboard.rule=Host(`${BOT_DOMAIN:-zazu.9nau.com}`)"
+      - "traefik.http.routers.zazu-dashboard.entrypoints=websecure"
+      - "traefik.http.routers.zazu-dashboard.tls.certresolver=${CERT_RESOLVER:-letencrypt}"
+      - "traefik.http.services.zazu-dashboard.loadbalancer.server.port=3000"
       - "traefik.docker.network=shared-mesh"
 
 networks:
