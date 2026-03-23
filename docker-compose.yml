@@ -44,11 +44,18 @@ services:
       - db
     networks:
       - shared-mesh
+    ports:
+      - "3001:3000"
     labels:
       - "traefik.enable=true"
+      # HTTPS Router
+      - "traefik.http.routers.zazu-dashboard-secure.rule=Host(`${BOT_DOMAIN:-zazu.9nau.com}`)"
+      - "traefik.http.routers.zazu-dashboard-secure.entrypoints=websecure"
+      - "traefik.http.routers.zazu-dashboard-secure.tls=true"
+      - "traefik.http.routers.zazu-dashboard-secure.tls.certresolver=${CERT_RESOLVER:-letsencrypt}"
+      # HTTP Router (Fallback for Local)
       - "traefik.http.routers.zazu-dashboard.rule=Host(`${BOT_DOMAIN:-zazu.9nau.com}`)"
-      - "traefik.http.routers.zazu-dashboard.entrypoints=websecure"
-      - "traefik.http.routers.zazu-dashboard.tls.certresolver=${CERT_RESOLVER:-letencrypt}"
+      - "traefik.http.routers.zazu-dashboard.entrypoints=web"
       - "traefik.http.services.zazu-dashboard.loadbalancer.server.port=3000"
       - "traefik.docker.network=shared-mesh"
 
