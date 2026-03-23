@@ -1,6 +1,6 @@
 {
   "name": "zazu",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": true,
   "author": {
     "name": "Samuel Aure",
@@ -28,14 +28,16 @@
     "test": "npm run test --workspaces",
     "verify": "npm run lint && npm run build",
     "db:push": "npm run prisma:push --workspace=@zazu/db",
-    "db:studio": "npm run prisma:studio --workspace=@zazu/db"
+    "db:studio": "npm run prisma:studio --workspace=@zazu/db",
+    "release": "standard-version"
   },
   "devDependencies": {
-    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0",
     "eslint": "^8.0.0",
     "prettier": "^3.0.0",
+    "standard-version": "^9.5.0",
     "ts-node": "^10.9.1",
-    "@types/node": "^20.0.0"
+    "typescript": "^5.0.0"
   },
   "overrides": {
     "react": "19.0.0",
