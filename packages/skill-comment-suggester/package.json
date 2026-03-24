@@ -1,0 +1,19 @@
+{
+  "name": "@zazu/skill-comment-suggester",
+  "version": "0.1.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "private": true,
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@zazu/db": "*",
+    "@zazu/skills-core": "*",
+    "apify-client": "^2.10.0",
+    "openai": "^4.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
