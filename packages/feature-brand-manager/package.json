@@ -1,5 +1,5 @@
 {
-  "name": "@zazu/skill-comment-suggester",
+  "name": "@zazu/feature-brand-manager",
   "version": "0.1.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -10,8 +10,8 @@
   "dependencies": {
     "@zazu/db": "*",
     "@zazu/skills-core": "*",
-    "apify-client": "^2.10.0",
-    "openai": "^4.0.0"
+    "@zazu/skill-comment-suggester": "*",
+    "telegraf": "^4.16.3"
   },
   "devDependencies": {
     "typescript": "^5.0.0"
