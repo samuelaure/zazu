@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/samuelaure/zazu/compare/v1.2.0...v1.3.0) (2026-04-07)
+
+
+### Features
+
+* **bot:** add internal notification endpoint for cross-app orchestration ([9aecf14](https://github.com/samuelaure/zazu/commit/9aecf1436c3c1fc38119d17b8fb332cc0f37a0fc))
+* **bot:** implement SkillManager orchestrator ([2eb6c76](https://github.com/samuelaure/zazu/commit/2eb6c7640fba4911f5b54e90997dc781f6829f02))
+* **core-voice:** implement native whisper transcription and pre-processor ([8e5df26](https://github.com/samuelaure/zazu/commit/8e5df262b939c5f102db973bed7f935e383e1cc7))
+* **core:** bootstrap @zazu/skills-core package ([e946e32](https://github.com/samuelaure/zazu/commit/e946e3247e3d5b4526b216302d5e0fde244ff986))
+* **db:** add CommentSuggester model for proactive monitoring ([7ea8b47](https://github.com/samuelaure/zazu/commit/7ea8b479f9d5107c3aa80a3772cf130c28d17c0b))
+* **db:** add ProcessedPost model for duplicate prevention ([4718273](https://github.com/samuelaure/zazu/commit/4718273a984c9b2e02a0ff4a22f5e3f367f87067))
+* **delivery:** create delivery window queue and express gateway ([69bd5bc](https://github.com/samuelaure/zazu/commit/69bd5bce42a2a6eac7057f2109fbd4ad5231a977))
+* **skill-chat:** implement ConversationalSkill fallback ([d30a71a](https://github.com/samuelaure/zazu/commit/d30a71a5708b227ecaae4966dafc1dc639cab3d5))
+* **skill-suggester:** implement brand monitoring and AI comment logic ([02b0310](https://github.com/samuelaure/zazu/commit/02b03109f0e4ae1e715c7f5b016bddd3cf10e483))
+* **worker:** bootstrap and implement proactive scheduler engine ([58e3f9d](https://github.com/samuelaure/zazu/commit/58e3f9df22c2449531c71bf2c92532596f0078a8))
+
 ## 1.2.0 (2026-03-23)
 
 
