@@ -28,6 +28,7 @@
     "test": "npm run test --workspaces",
     "verify": "npm run lint && npm run build",
     "db:push": "npm run prisma:push --workspace=@zazu/db",
+    "db:migrate": "npx prisma migrate dev --schema=packages/db/prisma/schema.prisma",
     "db:studio": "npm run prisma:studio --workspace=@zazu/db",
     "release": "standard-version"
   },
