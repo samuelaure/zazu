@@ -50,6 +50,24 @@ jobs:
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd ${{ secrets.DEPLOY_PATH }}
+            set -e
+            mkdir -p /root/zazu
+
+            # Write production .env from secrets
+            cat > /root/zazu/.env << 'ENVEOF'
+            TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}
+            OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
+            NAU_SERVICE_KEY=${{ secrets.NAU_SERVICE_KEY }}
+            AUTH_SECRET=${{ secrets.AUTH_SECRET }}
+            ADMIN_PASSWORD=${{ secrets.ADMIN_PASSWORD }}
+            POSTGRES_USER=postgres
+            POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}
+            POSTGRES_DB=zazu
+            BOT_DOMAIN=zazu.9nau.com
+            CERT_RESOLVER=letsencrypt
+            TAG=latest
+            ENVEOF
+
+            cd /root/zazu
             docker compose pull
-            docker compose up -d
+            docker compose up -d --remove-orphans
