@@ -2,45 +2,50 @@ services:
   db:
     image: postgres:16-alpine
     container_name: zazu-postgres
-    restart: always
+    restart: unless-stopped
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
       POSTGRES_DB: ${POSTGRES_DB:-zazu}
-      POSTGRES_HOST_AUTH_METHOD: trust
-
     networks:
-      - shared-mesh
-    ports:
-      - "5433:5432"
+      - nau-network
     volumes:
-
       - db-data:/var/lib/postgresql/data
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
   bot:
-    build:
-      context: .
-      dockerfile: apps/bot/Dockerfile
+    image: ghcr.io/samuelaure/zazu/bot:${TAG:-latest}
     container_name: zazu-bot
-    restart: always
+    restart: unless-stopped
     environment:
       TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
       OPENAI_API_KEY: ${OPENAI_API_KEY}
+      NAU_SERVICE_KEY: ${NAU_SERVICE_KEY}
+      NAUTHENTICITY_URL: http://nauthenticity:3000
       DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@db:5432/${POSTGRES_DB:-zazu}?schema=public
     depends_on:
       - db
     networks:
-      - shared-mesh
+      - nau-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
   dashboard:
-    build:
-      context: .
-      dockerfile: apps/dashboard/Dockerfile
+    image: ghcr.io/samuelaure/zazu/dashboard:${TAG:-latest}
     container_name: zazu-dashboard
-    restart: always
+    restart: unless-stopped
     environment:
       DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@db:5432/${POSTGRES_DB:-zazu}?schema=public
       TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
+      NAU_SERVICE_KEY: ${NAU_SERVICE_KEY}
+      NAUTHENTICITY_URL: http://nauthenticity:3000
       AUTH_SECRET: ${AUTH_SECRET}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD}
       AUTH_TRUST_HOST: "true"
@@ -48,24 +53,23 @@ services:
     depends_on:
       - db
     networks:
-      - shared-mesh
+      - nau-network
     labels:
       - "traefik.enable=true"
-      # HTTPS Router
       - "traefik.http.routers.zazu-dashboard-secure.rule=Host(`${BOT_DOMAIN:-zazu.9nau.com}`)"
       - "traefik.http.routers.zazu-dashboard-secure.entrypoints=websecure"
       - "traefik.http.routers.zazu-dashboard-secure.tls=true"
       - "traefik.http.routers.zazu-dashboard-secure.tls.certresolver=${CERT_RESOLVER:-letsencrypt}"
-      # HTTP Router (Fallback for Local)
-      - "traefik.http.routers.zazu-dashboard.rule=Host(`${BOT_DOMAIN:-zazu.9nau.com}`)"
-      - "traefik.http.routers.zazu-dashboard.entrypoints=web"
       - "traefik.http.services.zazu-dashboard.loadbalancer.server.port=3000"
-      - "traefik.docker.network=shared-mesh"
-
-
+      - "traefik.docker.network=nau-network"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
 networks:
-  shared-mesh:
+  nau-network:
     external: true
 
 volumes:
