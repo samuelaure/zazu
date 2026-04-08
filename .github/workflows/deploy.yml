@@ -58,7 +58,7 @@ jobs:
 
 
             # Write production .env from secrets
-            cat > /root/zazu/.env << 'ENVEOF'
+            cat > /root/zazu/.env.tmp << 'ENVEOF'
             TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}
             OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
             NAU_SERVICE_KEY=${{ secrets.NAU_SERVICE_KEY }}
@@ -71,6 +71,7 @@ jobs:
             CERT_RESOLVER=letsencrypt
             TAG=latest
             ENVEOF
+            tr -d '\r' < /root/zazu/.env.tmp > /root/zazu/.env
 
             cd /root/zazu
             docker compose pull
