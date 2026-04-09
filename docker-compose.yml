@@ -48,6 +48,7 @@ services:
       NAUTHENTICITY_URL: http://nauthenticity:3000
       AUTH_SECRET: ${AUTH_SECRET}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      ADMIN_TELEGRAM_ID: ${ADMIN_TELEGRAM_ID}
       AUTH_TRUST_HOST: "true"
       NEXTAUTH_URL: https://${BOT_DOMAIN:-zazu.9nau.com}
     depends_on:
