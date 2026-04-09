@@ -75,5 +75,8 @@ jobs:
             tr -d '\r' < /root/zazu/.env.tmp > /root/zazu/.env
 
             cd /root/zazu
+            # Prevent disk space issues by cleaning up unused docker objects
+            docker system prune -f
+            
             docker compose pull
             docker compose up -d --remove-orphans
