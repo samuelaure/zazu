@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/samuelaure/zazu/compare/v1.4.0...v1.5.0) (2026-04-09)
+
+
+### Features
+
+* **auth:** implement secure telegram mini app auto-login with hmac verification ([93acf9d](https://github.com/samuelaure/zazu/commit/93acf9d80c421d359f3d14f4796ab513dbd4b0e8))
+* **bot:** implement immediate delivery and enhanced suggestion buttons ([413fb9e](https://github.com/samuelaure/zazu/commit/413fb9e13243f8d928c72a33b462d28aab0caea2))
+* **bot:** implement suggestion selection feedback loop ([f36e388](https://github.com/samuelaure/zazu/commit/f36e3889f5b43501ae4a77bbee83d76edbb9f57a))
+* **dashboard:** add back navigation from brands to root hub ([fda0873](https://github.com/samuelaure/zazu/commit/fda08731cfd523cf46d063a87d3bafcdd3e18322))
+* **dashboard:** add premium comment edit page ([83f560b](https://github.com/samuelaure/zazu/commit/83f560bd98c2f856a993a039b128564da5968337))
+* **dashboard:** admin vs user view toggle and responsive UI implementation ([75edb1f](https://github.com/samuelaure/zazu/commit/75edb1f1b340d31a28781c55ec50096a476331ab))
+* **mini-app:** rewrite brand management UI with full comment suggester fields ([4d6d799](https://github.com/samuelaure/zazu/commit/4d6d79934b5b6ca7ba3631b70b694b40eaabdf53))
+* **telegram:** inject mini app button into menu and /start command ([9da6a7c](https://github.com/samuelaure/zazu/commit/9da6a7c3f69791925e4397f6dab65708654613f5))
+
+
+### Bug Fixes
+
+* add @twa-dev/sdk to deps and write .env from secrets in GHA ([1a60e8f](https://github.com/samuelaure/zazu/commit/1a60e8f919e6118b462d241ec8e5bc1c9f11b360))
+* **api:** align dashboard actions with nauthenticity api prefix ([2a246e9](https://github.com/samuelaure/zazu/commit/2a246e949702c7ff91a89aed803e2080a59a3131))
+* **auth:** add SessionProvider to root layout to resolve useSession error ([1f87833](https://github.com/samuelaure/zazu/commit/1f878331e748bbf81f0cb32c4f1c6e8b9ce278e4))
+* **bot:** point mini app url to root dashboard instead of brands list ([efc4bbf](https://github.com/samuelaure/zazu/commit/efc4bbf88952fececbc1f1aacc3392616a8fca86))
+* **dashboard:** pass ADMIN_TELEGRAM_ID to container and overhaul brands UI aesthetics ([cecf7ed](https://github.com/samuelaure/zazu/commit/cecf7edd42110706404861f9264680d951a2d3bb))
+* **infra:** rename bot container to zazu and add bot domain env ([ec72abb](https://github.com/samuelaure/zazu/commit/ec72abb3204439d1611a6a836901fc7218077af8))
+* **orchestration:** restore dashboard actions, fix TG provider SSR, add GHCR docker login ([b23b084](https://github.com/samuelaure/zazu/commit/b23b084040f8d32754cd0f1336a021cb7f72b89a))
+* **orchestration:** strip CRLF characters in .env generation to prevent secrets corruption ([25c60f9](https://github.com/samuelaure/zazu/commit/25c60f9e3c96fd730a0ed32856ecf69c112569a5))
+* remove BrandManagerSkill import from bot nucleus ([9fb7a11](https://github.com/samuelaure/zazu/commit/9fb7a112d6f75866ca66eb3d95178d44c43abd8f))
+
 ## [1.4.0](https://github.com/samuelaure/zazu/compare/v1.2.0...v1.4.0) (2026-04-08)
 
 
