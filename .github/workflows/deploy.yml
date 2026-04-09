@@ -64,6 +64,7 @@ jobs:
             NAU_SERVICE_KEY=${{ secrets.NAU_SERVICE_KEY }}
             AUTH_SECRET=${{ secrets.AUTH_SECRET }}
             ADMIN_PASSWORD=${{ secrets.ADMIN_PASSWORD }}
+            ADMIN_TELEGRAM_ID=5109114390
             POSTGRES_USER=postgres
             POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}
             POSTGRES_DB=zazu
