@@ -16,6 +16,11 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.35'
+          memory: 192M
 
   bot:
     image: ghcr.io/samuelaure/zazu/bot:${TAG:-latest}
@@ -37,6 +42,11 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.35'
+          memory: 192M
 
   dashboard:
     image: ghcr.io/samuelaure/zazu/dashboard:${TAG:-latest}
@@ -69,6 +79,11 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.35'
+          memory: 192M
 
 networks:
   nau-network:
