@@ -42,6 +42,15 @@ jobs:
           file: apps/dashboard/Dockerfile
           push: true
           tags: ghcr.io/${{ github.repository }}/dashboard:latest,ghcr.io/${{ github.repository }}/dashboard:${{ github.ref_name }}
+          
+      - name: Copy docker-compose.yml to server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: 'docker-compose.yml'
+          target: '/root/zazu/'
 
       - name: Deploy to Server
         uses: appleboy/ssh-action@master
