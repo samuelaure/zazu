@@ -4,9 +4,9 @@ services:
     container_name: zazu-postgres
     restart: unless-stopped
     environment:
-      POSTGRES_USER: ${POSTGRES_USER:-postgres}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
-      POSTGRES_DB: ${POSTGRES_DB:-zazu}
+      DATABASE_USER: ${DATABASE_USER:-postgres}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD:-postgres}
+      DATABASE_NAME: ${DATABASE_NAME:-zazu}
     networks:
       - nau-network
     volumes:
@@ -32,7 +32,7 @@ services:
       NAU_SERVICE_KEY: ${NAU_SERVICE_KEY}
       NAUTHENTICITY_URL: http://nauthenticity:3000
       BOT_DOMAIN: ${BOT_DOMAIN:-zazu.9nau.com}
-      DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@zazu_db:5432/${POSTGRES_DB:-zazu}?schema=public
+      DATABASE_URL: postgresql://${DATABASE_USER:-postgres}:${DATABASE_PASSWORD:-postgres}@zazu_db:5432/${DATABASE_NAME:-zazu}?schema=public
     depends_on:
       - zazu_db
     networks:
@@ -53,7 +53,7 @@ services:
     container_name: zazu-dashboard
     restart: unless-stopped
     environment:
-      DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@zazu_db:5432/${POSTGRES_DB:-zazu}?schema=public
+      DATABASE_URL: postgresql://${DATABASE_USER:-postgres}:${DATABASE_PASSWORD:-postgres}@zazu_db:5432/${DATABASE_NAME:-zazu}?schema=public
       TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
       NAU_SERVICE_KEY: ${NAU_SERVICE_KEY}
       NAUTHENTICITY_URL: http://nauthenticity:3000
