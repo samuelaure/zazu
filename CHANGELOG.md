@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.3](https://github.com/samuelaure/zazu/compare/v1.5.2...v1.5.3) (2026-04-18)
+
+
+### Bug Fixes
+
+* **bot:** resolve Telegram ID to internal UUID and create placeholder user to fix FK error in notify endpoint ([21184c7](https://github.com/samuelaure/zazu/commit/21184c7566deed792fa25d06b24990c5713d77d6))
+
 ### [1.5.1](https://github.com/samuelaure/zazu/compare/v1.5.0...v1.5.1) (2026-04-10)
 
 
