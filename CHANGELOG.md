@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.8.0](https://github.com/samuelaure/zazu/compare/v1.7.2...v1.8.0) (2026-04-19)
+
+
+### Features
+
+* **infra:** add nau_api_url and inject openai_api_key into bot ([7760c8d](https://github.com/samuelaure/zazu/commit/7760c8d586188f3635172caa6f244797395b8c3f))
+
 ### [1.7.2](https://github.com/samuelaure/zazu/compare/v1.7.1...v1.7.2) (2026-04-19)
 
 
