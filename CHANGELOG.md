@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.7.2](https://github.com/samuelaure/zazu/compare/v1.7.1...v1.7.2) (2026-04-19)
+
+
+### Features
+
+* **dashboard:** pass initData in callback URL for cross-domain redirect resilience ([6a2dd2f](https://github.com/samuelaure/zazu/commit/6a2dd2f45aa44732900cca607ef38cecf4130d5b))
+
 ### [1.7.1](https://github.com/samuelaure/zazu/compare/v1.7.0...v1.7.1) (2026-04-19)
 
 
