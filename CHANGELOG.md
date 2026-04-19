@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.7.0](https://github.com/samuelaure/zazu/compare/v1.6.0...v1.7.0) (2026-04-19)
+
+
+### Features
+
+* **dashboard:** implement session re-sync after account linking ([b99f64d](https://github.com/samuelaure/zazu/commit/b99f64dd94a2a00bb5e70c1e054cac43a6b28456))
+
 ### [1.5.6](https://github.com/samuelaure/zazu/compare/v1.5.5...v1.5.6) (2026-04-18)
 
 ### [1.5.5](https://github.com/samuelaure/zazu/compare/v1.5.4...v1.5.5) (2026-04-18)
