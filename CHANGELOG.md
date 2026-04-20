@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.10.1](https://github.com/samuelaure/zazu/compare/v1.10.0...v1.10.1) (2026-04-20)
+
+
+### Bug Fixes
+
+* **auth:** synchronize AUTH_SECRET and resolve authentication loop ([603638e](https://github.com/samuelaure/zazu/commit/603638e2cfa1aea8ddb238634e31c69a5635e652))
+
 ## [1.10.0](https://github.com/samuelaure/zazu/compare/v1.9.0...v1.10.0) (2026-04-20)
 
 
