@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.9.0](https://github.com/samuelaure/zazu/compare/v1.8.0...v1.9.0) (2026-04-20)
+
+
+### Features
+
+* **bot:** implement in-memory brand context caching and selection logic ([eb7d707](https://github.com/samuelaure/zazu/commit/eb7d707d789a45e10b7baab36e09194234653191))
+* **db:** fresh init migration ([00448d9](https://github.com/samuelaure/zazu/commit/00448d9e87c5a163c69606543c9fac34b01d352b))
+* **ui:** implement workspace and brand context panel for dashboard ([d475702](https://github.com/samuelaure/zazu/commit/d475702b15aeeb58e20c0996a4748802bf67c44a))
+
 ## [1.8.0](https://github.com/samuelaure/zazu/compare/v1.7.2...v1.8.0) (2026-04-19)
 
 
