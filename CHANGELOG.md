@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.10.0](https://github.com/samuelaure/zazu/compare/v1.9.0...v1.10.0) (2026-04-20)
+
+
+### Features
+
+* **phase-19:** implement minimalist brand creation UI and actions ([87bd80e](https://github.com/samuelaure/zazu/commit/87bd80efc8810fab80c351430e0e6b1a4da45718))
+
 ## [1.9.0](https://github.com/samuelaure/zazu/compare/v1.8.0...v1.9.0) (2026-04-20)
 
 
