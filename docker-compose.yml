@@ -30,7 +30,7 @@ services:
       TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
       OPENAI_API_KEY: ${OPENAI_API_KEY}
       NAU_SERVICE_KEY: ${NAU_SERVICE_KEY}
-      NAUTHENTICITY_URL: http://nauthenticity:3000
+      NAUTHENTICITY_URL: ${NAUTHENTICITY_URL}
       NAU_API_URL: ${NAU_API_URL:-http://9nau-api:3000}
       BOT_DOMAIN: ${BOT_DOMAIN:-zazu.9nau.com}
       DATABASE_URL: postgresql://${DATABASE_USER:-postgres}:${DATABASE_PASSWORD:-postgres}@zazu_db:5432/${DATABASE_NAME:-zazu}?schema=public
