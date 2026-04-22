@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.10.6](https://github.com/samuelaure/zazu/compare/v1.10.5...v1.10.6) (2026-04-22)
+
+
+### Bug Fixes
+
+* **dashboard:** resolve stale JWT workspace visibility by adding DB fallback ([f91a937](https://github.com/samuelaure/zazu/commit/f91a93711bb4e59c0ef97f371882f41052ebf0f1))
+
 ### [1.10.3](https://github.com/samuelaure/zazu/compare/v1.9.3...v1.10.3) (2026-04-22)
 
 ### [1.10.2](https://github.com/samuelaure/zazu/compare/v1.9.1...v1.10.2) (2026-04-22)
